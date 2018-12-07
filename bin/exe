@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "buildkite_graphql_ruby/cli"
+puts BuildkiteGraphqlRuby::CLI.main(ARGV)
