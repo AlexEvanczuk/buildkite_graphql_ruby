@@ -8,7 +8,7 @@ module BuildkiteGraphqlRuby
       }
 
       def self.get_command(command_string:)
-        COMMAND_MAP.fetch(command_string)
+        COMMAND_MAP.fetch(command_string).new
       end
     end
   end
