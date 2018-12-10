@@ -21,7 +21,7 @@ module BuildkiteGraphqlRuby
       uri = URI.parse("https://graphql.buildkite.com/v1")
       https = Net::HTTP.new(uri.host,uri.port)
       https.use_ssl = true
-
+      https.read_timeout = 500
       req = Net::HTTP::Post.new(uri.path, initheader = {'Authorization' =>"Bearer #{options.api_token}"})
       req.body = payload
       res = https.request(req)
