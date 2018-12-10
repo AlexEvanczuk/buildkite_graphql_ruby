@@ -2,4 +2,12 @@
 
 require "bundler/setup"
 require "buildkite_graphql_ruby/cli"
-puts BuildkiteGraphqlRuby::CLI.main(ARGV)
+require "buildkite_graphql_ruby/query_builder"
+require "buildkite_graphql_ruby/query_runner"
+require "buildkite_graphql_ruby/commands/command_map"
+require 'pry'
+
+options = BuildkiteGraphqlRuby::CLI.parse(ARGV)
+command = BuildkiteGraphqlRuby::Commands::CommandMap.get_command(options.command)
+result = command.run!(options)
+command.report_result(result)
