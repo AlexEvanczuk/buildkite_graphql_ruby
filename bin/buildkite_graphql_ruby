@@ -7,7 +7,7 @@ require "buildkite_graphql_ruby/query_runner"
 require "buildkite_graphql_ruby/commands/command_map"
 require 'pry'
 
-options = BuildkiteGraphqlRuby::CLI.parse(ARGV)
-command = BuildkiteGraphqlRuby::Commands::CommandMap.get_command(options.command)
-result = command.run!(options)
-command.report_result(result)
+options = BuildkiteGraphqlRuby::CLI.parse(args: ARGV)
+command = BuildkiteGraphqlRuby::Commands::CommandMap.get_command(command_string: options.command)
+result = command.run!(options: options)
+command.report_result(result: result, options: options)
