@@ -27,6 +27,8 @@ module BuildkiteGraphqlRuby
                             agent {
                               id
                             }
+                            passed
+                            label
                             artifacts(first: 100) {
                               edges {
                                 node {
