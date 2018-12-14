@@ -23,7 +23,20 @@ Or install it yourself as:
 ## Usage
 
 ```
-bin/buildkite_graphql_ruby --branch some_branch_one --api-token YOUR_API_TOKEN
+
+buildkite_graphql_ruby --help
+Usage: buildkite_graphql_ruby [options]
+
+Specific options:
+    -b, --branch BRANCH              Git branch to get stats on (default: current)
+    -C, --command COMMAND            What type of query to run (default and only option: branch_status
+    -a, --api-token API TOKEN        Git branch to get stats on (default: current)
+
+Common options:
+    -h, --help                       Show this message
+        --version                    Show version
+
+buildkite_graphql_ruby --branch some_branch_one --api-token YOUR_API_TOKEN
 ================================================================================
 Branch "some_branch_one" has a failing build
 URL: https://buildkite.com/gusto/some_repository/builds/25247
@@ -35,7 +48,7 @@ Failing tests:
 Failing Job: :pipeline:
 ================================================================================
 
-bin/buildkite_graphql_ruby --branch some_other_branch --api-token YOUR_API_TOKEN
+buildkite_graphql_ruby --branch some_other_branch --api-token YOUR_API_TOKEN
 ================================================================================
 Branch "some_other_branch" has a passing build
 URL: https://buildkite.com/gusto/some_repository/builds/25241
