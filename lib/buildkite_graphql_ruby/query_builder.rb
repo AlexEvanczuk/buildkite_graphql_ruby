@@ -20,7 +20,7 @@ module BuildkiteGraphqlRuby
                     pullRequest {
                       id
                     }
-                    jobs(first: 100) {
+                    jobs(last: 20) {
                       edges {
                         node {
                           \.\.\. on JobTypeCommand {
