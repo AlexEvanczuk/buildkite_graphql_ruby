@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
 require "buildkite_graphql_ruby/cli"
 require "buildkite_graphql_ruby/query_builder"
 require "buildkite_graphql_ruby/query_runner"
