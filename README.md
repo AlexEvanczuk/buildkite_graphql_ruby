@@ -1,8 +1,8 @@
 # BuildkiteGraphqlRuby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/buildkite_graphql_ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+Work in progress utility to display the current Buildkite build status of your current git branch.
 
-TODO: Delete this and the text above, and describe your gem
+Requires configuring rspec to run using the json formatter and output to a file named `tmp/rspec_json_results.json` which needs to be included as an artifact in your build.
 
 ## Installation
 
@@ -22,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+bin/buildkite_graphql_ruby --branch some_branch_one --api-token YOUR_API_TOKEN
+================================================================================
+Branch "some_branch_one" has a failing build
+URL: https://buildkite.com/gusto/some_repository/builds/25247
+
+Failing Job: :rspec: 6
+150 examples, 1 failure
+Failing tests:
+./spec/request/some_request_spec.rb
+Failing Job: :pipeline:
+================================================================================
+
+bin/buildkite_graphql_ruby --branch some_other_branch --api-token YOUR_API_TOKEN
+================================================================================
+Branch "some_other_branch" has a passing build
+URL: https://buildkite.com/gusto/some_repository/builds/25241
+================================================================================
+```
 
 ## Development
 
