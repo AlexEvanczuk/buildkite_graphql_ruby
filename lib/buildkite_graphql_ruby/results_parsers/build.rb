@@ -1,6 +1,6 @@
 module BuildkiteGraphqlRuby
   module ResultsParsers
-    class Build
+    class Build < OpenStruct
       require "buildkite_graphql_ruby/results_parsers/job"
 
       # Potential build states (from graphQL docs)
@@ -40,8 +40,8 @@ module BuildkiteGraphqlRuby
           branch: node['branch'],
           state: node['state'],
           url: node['url'],
-          started_at: Time.parse(node['startedAt']),
-          finished_at: Time.parse(node['finishedAt']),
+          started_at: node['startedAt'] && Time.parse(node['startedAt']),
+          finished_at: node['finishedAt'] && Time.parse(node['finishedAt']),
           pull_request: node['pullRequest'],
           jobs: jobs,
         )
@@ -49,32 +49,12 @@ module BuildkiteGraphqlRuby
 
       private_class_method :new
 
-      attr_reader :branch, :state, :url, :started_at, :finished_at, :pull_request, :jobs
-
-      def initialize(
-        branch:,
-        state:,
-        url:,
-        started_at:,
-        finished_at:,
-        pull_request:,
-        jobs:
-      )
-        @branch = branch
-        @state = state
-        @url = url
-        @started_at = started_at
-        @finished_at = finished_at
-        @pull_request = pull_request
-        @jobs = jobs
-      end
-
       def finished?
-        !@finished_at.nil?
+        !self.finished_at.nil?
       end
 
       def passed?
-        @state == 'PASSED'
+        self.state == 'PASSED'
       end
     end
   end

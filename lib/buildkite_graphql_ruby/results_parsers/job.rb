@@ -1,6 +1,6 @@
 module BuildkiteGraphqlRuby
   module ResultsParsers
-    class Job
+    class Job < OpenStruct
       require "buildkite_graphql_ruby/results_parsers/artifact"
 
       def self.from_response(response)
@@ -20,24 +20,6 @@ module BuildkiteGraphqlRuby
       end
 
       private_class_method :new
-
-      attr_reader :agent, :passed, :label,:command, :url, :artifacts
-
-      def initialize(
-        agent:,
-        passed:,
-        label:,
-        command:,
-        url:,
-        artifacts:
-      )
-        @agent = agent
-        @passed = passed
-        @label = label
-        @command = command
-        @url = url
-        @artifacts = artifacts
-      end
     end
   end
 end
