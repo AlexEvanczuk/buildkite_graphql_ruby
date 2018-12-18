@@ -20,7 +20,7 @@ module BuildkiteGraphqlRuby
                     pullRequest {
                       id
                     }
-                    jobs(last: 20) {
+                    jobs(last: 50) {
                       edges {
                         node {
                           \.\.\. on JobTypeCommand {
@@ -29,7 +29,7 @@ module BuildkiteGraphqlRuby
                             }
                             passed
                             label
-                            artifacts(first: 100) {
+                            artifacts(first: 300) {
                               edges {
                                 node {
                                   id
