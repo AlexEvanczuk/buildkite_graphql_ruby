@@ -2,6 +2,7 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "buildkite_graphql_ruby/version"
+require "buildkite_graphql_ruby"
 
 Gem::Specification.new do |spec|
   spec.name          = "buildkite_graphql_ruby"

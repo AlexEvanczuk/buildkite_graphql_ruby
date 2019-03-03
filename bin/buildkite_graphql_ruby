@@ -1,11 +1,5 @@
 #!/usr/bin/env ruby
-
-require "buildkite_graphql_ruby/cli"
-require "buildkite_graphql_ruby/query_builder"
-require "buildkite_graphql_ruby/query_runner"
-require "buildkite_graphql_ruby/commands/command_map"
-require 'pry'
-
+require "buildkite_graphql_ruby"
 options = BuildkiteGraphqlRuby::CLI.parse(args: ARGV)
 command = BuildkiteGraphqlRuby::Commands::CommandMap.get_command(command_string: options.command)
 result = command.run!(options: options)
