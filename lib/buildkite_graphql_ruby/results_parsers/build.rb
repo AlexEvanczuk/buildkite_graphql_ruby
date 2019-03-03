@@ -31,18 +31,16 @@ module BuildkiteGraphqlRuby
       # NOT_RUN
       # The build wasn't run
 
-      def self.from_response(response)
-        node = response['node']
-
-        jobs = node['jobs']["edges"].select{|j| j['node'].keys.count > 0 }.map{|build_response| ResultsParsers::Job.from_response(build_response) }
+      def self.from_response(build_response)
+        jobs = build_response['jobs']["edges"].select{|j| j['node'].keys.count > 0 }.map{|build_response| ResultsParsers::Job.from_response(build_response) }
  
         new(
-          branch: node['branch'],
-          state: node['state'],
-          url: node['url'],
-          started_at: node['startedAt'] && Time.parse(node['startedAt']),
-          finished_at: node['finishedAt'] && Time.parse(node['finishedAt']),
-          pull_request: node['pullRequest'],
+          branch: build_response['branch'],
+          state: build_response['state'],
+          url: build_response['url'],
+          started_at: build_response['startedAt'] && Time.parse(build_response['startedAt']),
+          finished_at: build_response['finishedAt'] && Time.parse(build_response['finishedAt']),
+          pull_request: build_response['pullRequest'],
           jobs: jobs,
         )
       end

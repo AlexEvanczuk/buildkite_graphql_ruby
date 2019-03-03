@@ -16,7 +16,7 @@ module BuildkiteGraphqlRuby
 
         return if report_if_no_builds(total_builds, options)
 
-        builds = builds_for_branch["edges"].map{|build_response| ResultsParsers::Build.from_response(build_response) }
+        builds = builds_for_branch["edges"].map{|build_response| ResultsParsers::Build.from_response(build_response['node']) }
         
         return if report_if_no_finished_builds(builds, options)
 
