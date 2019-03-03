@@ -26,8 +26,23 @@ module BuildkiteGraphqlRuby
           options.branch = branch.chomp
         end
 
+        opts.on("-a", "--artifact_to_pull ARTIFACT_TO_PULL",
+                "Artifact to pull for pull_artifacts command") do |artifact_to_pull|
+          options.artifact_to_pull = artifact_to_pull.chomp
+        end
+
+        opts.on("-o", "--output_artifact OUTPUT_ARTIFACT",
+                "Base name of output artifact for pull_artifacts command.  Dir is always tmp") do |output_artifact|
+          options.output_artifact = output_artifact.chomp
+        end
+
+        opts.on("-s", "--slug SLUG",
+                "Build slug to use for pull_artifacts command") do |slug|
+          options.slug = slug.chomp
+        end
+
         opts.on("-C", "--command COMMAND",
-                "What type of query to run (default and only option: branch_status") do |command|
+                "What type of query to run (default option: branch_status)") do |command|
           # TODO: Error on unaccepted query types
           options.command = command
         end
